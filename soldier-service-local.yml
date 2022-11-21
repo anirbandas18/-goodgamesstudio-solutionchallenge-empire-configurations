@@ -10,7 +10,7 @@ eureka:
         initial-instance-info-replication-interval-seconds: 120
         instance-info-replication-interval-seconds: 120
         serviceUrl:
-            defaultZone: http://naming-service:8761/eureka
+            defaultZone: http://127.0.0.1:87611/eureka
             registerWithEureka: true
     instance:
         prefer-ip-address: true
@@ -57,7 +57,7 @@ spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         password: $()Ld!3r
-        url: jdbc:mysql://rdbms-service:3306/emp_soldier_db?logger=com.mysql.cj.log.StandardLogger
+        url: jdbc:mysql://127.0.0.1:3306/emp_soldier_db?logger=com.mysql.cj.log.StandardLogger
         username: emp_soldier_manager
     jpa:
         hibernate:
@@ -76,7 +76,7 @@ spring:
         web:
             skipPattern: (^cleanup.*|.+favicon.*)
     zipkin:
-        baseUrl: http://tracing-service:9411
+        baseUrl: http://127.0.0.1:9411
         enabled: true
 springdoc:
     swagger-ui:

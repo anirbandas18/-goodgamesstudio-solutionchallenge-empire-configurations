@@ -1,19 +1,24 @@
-emp:
-    soldier:
-        description: '@project.description@'
-        unit:
-            fields-to-escape: ''
-        version: '@project.version@'
 eureka:
     client:
         enabled: true
         initial-instance-info-replication-interval-seconds: 120
         instance-info-replication-interval-seconds: 120
         serviceUrl:
-            defaultZone: http://naming-service:8761/eureka
+            defaultZone: http://127.0.0.1:8761/eureka
             registerWithEureka: true
     instance:
         prefer-ip-address: true
+feign:
+    circuitbreaker:
+        enabled: true
+    client:
+        config:
+            default:
+                loggerLevel: basic
+            soldier-service:
+                connectTimeout: 1000
+                loggerLevel: basic
+                readTimeout: 2000
 info:
     app:
         description: '@project.description@'
@@ -39,11 +44,20 @@ management:
         web:
             exposure:
                 include: '*'
-    #health:
-        #mongo:
-            #enabled: true
+emp:
+    army:
+        troop:
+            fields-to-escape:
+        description: '@project.description@'
+        dob:
+            format: dd-MM-yyyy
+        version: '@project.version@'
+        soldier:
+            service:
+                port: 8083
+                url: 127.0.0.1:${emp.army.soldier.service.port}
 server:
-    port: 11001
+    port: 17001
 spring:
     cloud:
         discovery:
@@ -56,9 +70,9 @@ spring:
                 enabled: true
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        password: $()Ld!3r
-        url: jdbc:mysql://rdbms-service:3306/emp_soldier_db?logger=com.mysql.cj.log.StandardLogger
-        username: emp_soldier_manager
+        password: ArMy
+        url: jdbc:mysql://127.0.0.1:3306/emp_army_db
+        username: emp_army_manager
     jpa:
         hibernate:
             ddl-auto: none
@@ -76,8 +90,7 @@ spring:
         web:
             skipPattern: (^cleanup.*|.+favicon.*)
     zipkin:
-        baseUrl: http://tracing-service:9411
+        baseUrl: http://127.0.0.1:9411
         enabled: true
-springdoc:
     swagger-ui:
         enabled: true
