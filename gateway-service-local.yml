@@ -78,8 +78,6 @@ spring:
         service-registry:
             auto-registration:
                 enabled: true
-    main:
-        web-application-type: reactive
     zipkin:
         baseUrl: http://127.0.0.1:9411
         enabled: true
