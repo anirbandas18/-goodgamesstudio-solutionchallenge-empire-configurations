@@ -16,15 +16,6 @@ info:
             version: '@java.version@'
         name: '@project.name@'
         version: '@project.version@'
-logging:
-    level:
-        org:
-            hibernate:
-                SQL: INFO
-                type:
-                    descriptor:
-                        sql:
-                            BasicBinder: INFO
 management:
     endpoint:
         health:
